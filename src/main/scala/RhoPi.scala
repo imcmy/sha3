@@ -3,6 +3,7 @@
 package sha3
 
 import chisel3._
+import chisel3.util._
 
 class RhoPiModule(val W: Int = 64) extends Module {
   val io = IO(new Bundle {

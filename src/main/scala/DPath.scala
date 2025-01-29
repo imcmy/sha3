@@ -124,7 +124,7 @@ class DpathModule(val W: Int, val S: Int)(implicit p: Parameters) extends Module
     state := VecInit(Seq.fill(5 * 5)(0.U(W.W)))
   }
 
-  when(reset) {
+  when(reset.asBool) {
     state := VecInit(Seq.fill(5 * 5)(0.U(W.W)))
   }
 }
