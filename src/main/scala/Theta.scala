@@ -3,6 +3,7 @@
 package sha3
 
 import chisel3._
+import chisel3.util._
 
 class ThetaModule(val W: Int = 64) extends Module {
   val io = IO(new Bundle {
@@ -20,7 +21,7 @@ class ThetaModule(val W: Int = 64) extends Module {
 
   (0 until 5).map(i => {
     val t = Wire(UInt(W.W))
-    t := bc((i + 4) % 5) ^ common.ROTL(bc((i + 1) % 5), 1.U, W.U)
+    t := bc((i + 4) % 5) ^ Common.ROTL(bc((i + 1) % 5), 1.U, W.U)
     (0 until 5).map(j => {
       io.state_o(i * 5 + j) := io.state_i(i * 5 + j) ^ t
     })
