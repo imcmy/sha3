@@ -21,10 +21,10 @@ class DmemModule(implicit p: Parameters) extends LazyModule {
 class DmemModuleImp(outer: DmemModule)(implicit p: Parameters) extends LazyModuleImp(outer) with HasCoreParameters {
 
   val io = IO(new Bundle {
-    val req = Decoupled(new HellaCacheReq).flip
+    val req = Flipped(Decoupled(new HellaCacheReq))
     val mem = Decoupled(new HellaCacheReq)
     val ptw = new TLBPTWIO
-    val status = new MStatus().asInput
+    val status = Input(new MStatus())
     val sfence = Input(Bool())
   })
 

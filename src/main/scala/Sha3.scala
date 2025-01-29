@@ -94,7 +94,7 @@ class Sha3AccelImp(outer: Sha3Accel)(implicit p: Parameters) extends LazyRoCCMod
 
     val status = RegEnable(io.cmd.bits.status, io.cmd.fire())
     val dmem_data = Wire(Bits())
-    def dmem_ctrl(req: DecoupledIO[HellaCacheReq]) {
+    def dmem_ctrl(req: DecoupledIO[HellaCacheReq]): UInt = {
       req.valid := ctrl.io.dmem_req_val
       ctrl.io.dmem_req_rdy := req.ready
       req.bits.tag := ctrl.io.dmem_req_tag
