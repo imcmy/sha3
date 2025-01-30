@@ -53,6 +53,8 @@ class DmemModuleImp(outer: DmemModule)(implicit p: Parameters) extends LazyModul
   tlb.io.sfence.bits.rs2 := false.B
   tlb.io.sfence.bits.addr := 0.U
   tlb.io.sfence.bits.asid := 0.U
+  tlb.io.sfence.bits.hv := false.B
+  tlb.io.sfence.bits.hg := false.B
   tlb.io.kill := false.B
 
   io.req.ready := io.mem.ready && tlb_ready

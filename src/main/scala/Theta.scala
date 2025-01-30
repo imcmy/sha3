@@ -11,7 +11,7 @@ class ThetaModule(val W: Int = 64) extends Module {
     val state_o = Output(Vec(5 * 5, UInt(W.W)))
   })
 
-  val bc = Wire(VecInit(Seq.fill(5)(UInt(W.W))))
+  val bc = VecInit(Seq.fill(5)(UInt(W.W)))
 
   (0 until 5).map(i => {
     bc(i) := io.state_i(i * 5 + 0) ^ io.state_i(i * 5 + 1) ^ io.state_i(i * 5 + 2) ^ io.state_i(i * 5 + 3) ^ io.state_i(

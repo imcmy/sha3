@@ -109,7 +109,6 @@ class DpathModule(val W: Int, val S: Int)(implicit p: Parameters) extends Module
     }
   }
 
-  val hash_res = Wire(Vec(hash_size_words, UInt(W.W)))
   for (i <- 0 until hash_size_words) {
     io.hash_out(i) := state(i * 5)
   }
